@@ -1,0 +1,17 @@
+[Unit]
+Description=Asterisk PBX
+Documentation=man:asterisk(8)
+Wants=network.target
+After=network.target nss-lookup.target
+
+[Service]
+Type=forking
+Environment=AST_CONFIG=/etc/asterisk/asterisk.conf AST_USER=asterisk ASTERISK_OPTS=
+EnvironmentFile=-/etc/sysconfig/asterisk
+ExecStart=/usr/sbin/asterisk -U ${AST_USER} -C ${AST_CONFIG} $ASTERISK_OPTS
+ExecStop=/usr/sbin/asterisk -rx 'core stop now'
+ExecReload=/usr/sbin/asterisk -rx 'core reload'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

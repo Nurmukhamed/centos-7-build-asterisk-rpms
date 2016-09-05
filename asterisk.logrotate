@@ -1,0 +1,18 @@
+/var/log/asterisk/*_log
+/var/log/asterisk/debug
+/var/log/asterisk/console
+/var/log/asterisk/messages
+/var/log/asterisk/full
+{
+	su root asterisk
+	create 640 asterisk asterisk
+	daily
+	missingok
+	compress
+	delaycompress
+	rotate 30
+	sharedscripts
+	postrotate
+		/sbin/service asterisk logger-reload
+	endscript
+}

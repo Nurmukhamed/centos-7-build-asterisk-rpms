@@ -1,0 +1,21 @@
+# Asterisk startup configuration file
+
+# Try to define nice-level for running asterisk
+SERVICE_RUN_NICE_LEVEL="+5"
+
+# Specify the configuration file
+AST_CONFIG=/etc/asterisk/asterisk.conf
+
+# The user that Asterisk will run as.
+AST_USER="asterisk"
+
+# If a user is specified above, Asterisk will change the group it runs
+# as to the primary group of the user, as well as initialize the
+# supplementary groups.  If you want to run Asterisk as a different
+# group, set AST_GROUP to the group that Asterisk should run as.  Note
+# that this may break Zaptel devices as supplementary groups will not
+# be initialized.
+#AST_GROUP="asterisk"
+
+# A place to specify extra arguments for the Asterisk command line
+ASTERISK_OPTS=""
