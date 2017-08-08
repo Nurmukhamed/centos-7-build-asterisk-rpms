@@ -76,7 +76,7 @@ Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/groupadd
 Requires(pre):	/usr/sbin/useradd
 Requires(pre):	/usr/bin/getent
-PProvides:	group(asterisk)
+Provides:	group(asterisk)
 Provides:	user(asterisk)
 Conflicts:	logrotate < 3.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
