@@ -496,8 +496,8 @@ find doc/api -name '*.map' -size 0 -delete
 %{__rm} %{buildroot}%{_libdir}/asterisk/modules/res_hep_rtcp.so
 %{__rm} %{buildroot}%{_libdir}/asterisk/modules/res_snmp.so
 
-%{__rm} %{buildroot}%{_sbindir}/check_expr
-%{__rm} %{buildroot}%{_sbindir}/check_expr2
+%{__rm} -f %{buildroot}%{_sbindir}/check_expr
+%{__rm} -f %{buildroot}%{_sbindir}/check_expr2
 %{__rm} %{buildroot}%{_sbindir}/rasterisk
 
 %{__rm} -r %{buildroot}/usr/include/asterisk/doxygen
