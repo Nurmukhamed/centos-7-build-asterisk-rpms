@@ -558,8 +558,6 @@ chown -R asterisk:asterisk /var/lib/asterisk
 %{_mandir}/man8/astgenkey.8*
 %{_mandir}/man8/autosupport.8*
 
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/logrotate.d/%{name}
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_unitdir}/%{name}.service
 
 %attr(750,root,asterisk) %dir %{_sysconfdir}/asterisk
@@ -876,7 +874,6 @@ chown -R asterisk:asterisk /var/lib/asterisk
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libasteriskssl.so
 %dir %{_includedir}/asterisk
 %{_includedir}/asterisk/*.h
 %{_includedir}/asterisk.h
