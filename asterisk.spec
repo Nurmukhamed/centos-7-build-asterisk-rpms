@@ -87,6 +87,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define _noautoprovfiles %{_libdir}/asterisk/modules/.*
 
+%define _unpackaged_files_terminate_build 0
+
 %description
 Asterisk is an Open Source PBX and telephony development platform that
 can both replace a conventional PBX and act as a platform for
