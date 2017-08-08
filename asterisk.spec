@@ -70,6 +70,7 @@ Requires(post,preun,postun):	systemd-units >= 38
 Requires:	systemd-units >= 0.38
 BuildRequires:	uriparser-devel
 BuildRequires:	zlib-devel
+BuildRequires:	gcc-c++
 Requires(postun):	/usr/sbin/groupdel
 Requires(postun):	/usr/sbin/userdel
 Requires(pre):	/bin/id
