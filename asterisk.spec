@@ -21,7 +21,6 @@ License:	GPL v2
 Group:		Applications/System
 Source0:	http://downloads.digium.com/pub/asterisk/releases/%{name}-%{version}.tar.gz
 # Source0-md5:	d980162e8a7be13fd85dbab81e7d0bfe
-Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	%{name}.tmpfiles
 Source4:	%{name}.logrotate
