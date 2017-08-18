@@ -21,7 +21,6 @@ License:	GPL v2
 Group:		Applications/System
 Source0:	http://downloads.digium.com/pub/asterisk/releases/%{name}-%{version}.tar.gz
 # Source0-md5:	d980162e8a7be13fd85dbab81e7d0bfe
-Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	%{name}.tmpfiles
 Source4:	%{name}.logrotate
@@ -70,13 +69,14 @@ Requires(post,preun,postun):	systemd-units >= 38
 Requires:	systemd-units >= 0.38
 BuildRequires:	uriparser-devel
 BuildRequires:	zlib-devel
+BuildRequires:	gcc-c++
 Requires(postun):	/usr/sbin/groupdel
 Requires(postun):	/usr/sbin/userdel
 Requires(pre):	/bin/id
 Requires(pre):	/usr/sbin/groupadd
 Requires(pre):	/usr/sbin/useradd
 Requires(pre):	/usr/bin/getent
-PProvides:	group(asterisk)
+Provides:	group(asterisk)
 Provides:	user(asterisk)
 Conflicts:	logrotate < 3.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -85,6 +85,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		skip_post_check_so	libasteriskssl.so.*
 
 %define _noautoprovfiles %{_libdir}/asterisk/modules/.*
+
+%define _unpackaged_files_terminate_build 0
 
 %description
 Asterisk is an Open Source PBX and telephony development platform that
@@ -495,8 +497,8 @@ find doc/api -name '*.map' -size 0 -delete
 %{__rm} %{buildroot}%{_libdir}/asterisk/modules/res_hep_rtcp.so
 %{__rm} %{buildroot}%{_libdir}/asterisk/modules/res_snmp.so
 
-%{__rm} %{buildroot}%{_sbindir}/check_expr
-%{__rm} %{buildroot}%{_sbindir}/check_expr2
+%{__rm} -f %{buildroot}%{_sbindir}/check_expr
+%{__rm} -f %{buildroot}%{_sbindir}/check_expr2
 %{__rm} %{buildroot}%{_sbindir}/rasterisk
 
 %{__rm} -r %{buildroot}/usr/include/asterisk/doxygen
@@ -557,8 +559,6 @@ chown -R asterisk:asterisk /var/lib/asterisk
 %{_mandir}/man8/astgenkey.8*
 %{_mandir}/man8/autosupport.8*
 
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/logrotate.d/%{name}
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_unitdir}/%{name}.service
 
 %attr(750,root,asterisk) %dir %{_sysconfdir}/asterisk
@@ -875,7 +875,6 @@ chown -R asterisk:asterisk /var/lib/asterisk
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libasteriskssl.so
 %dir %{_includedir}/asterisk
 %{_includedir}/asterisk/*.h
 %{_includedir}/asterisk.h
