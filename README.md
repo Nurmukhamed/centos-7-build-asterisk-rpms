@@ -1,3 +1,7 @@
+**This repo is depricated**
+
+Please use [fedora src.rpm](https://src.fedoraproject.org/rpms/asterisk/tree/)
+
 # centos-7-build-asterisk-rpms
 How to build asterisk rpms on Centos 7
 
