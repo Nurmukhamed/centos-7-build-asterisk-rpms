@@ -353,6 +353,7 @@ cd ..
 	%{__without tds tds} \
 	%{__without odbc unixodbc}
 
+test -e .cleancount || echo -n 1 > .cleancount
 cp -f .cleancount .lastclean
 
 %{__make} menuselect/menuselect
